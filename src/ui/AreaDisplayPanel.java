@@ -28,7 +28,7 @@ import network.Client;
 
 /**
  * The window where the game is rendered
- * 
+ *
  * @author cameronmclachlan
  *
  */
@@ -46,7 +46,7 @@ public class AreaDisplayPanel extends JPanel implements KeyListener, MouseListen
 	private final int tileWidth = 32;
 	private final int tileHeight = 25;
 
-	// x and Y buff when inbetween tiles 
+	// x and Y buff when inbetween tiles
 	private int mainPlayerXBuff; // 0 >= xBuff <= 32
 	private int mainPlayerYBuff; // 0 >= xBuff <= 32
 
@@ -105,7 +105,7 @@ public class AreaDisplayPanel extends JPanel implements KeyListener, MouseListen
 	}
 
 	/**
-	 * Creates a 
+	 * Creates a
 	 * @param overlayPanel
 	 */
 	public void setOverLay(OverlayPanel overlayPanel) {
@@ -136,6 +136,9 @@ public class AreaDisplayPanel extends JPanel implements KeyListener, MouseListen
 			return;
 
 		} else {
+
+			this.toAnimate.clear(); //New room so clear animation.
+
 			String oldArea = currentArea.getAreaName();
 
 			if (!oldArea.equals(this.mainPlayer.getCurrentArea().getAreaName())) {
@@ -430,7 +433,7 @@ public class AreaDisplayPanel extends JPanel implements KeyListener, MouseListen
 			if (roomObj == null) {
 				return;
 			}
-			
+
 			// if object is a door/window
 			if (roomObj instanceof DoorGO) {
 				DoorGO door = (DoorGO) roomObj;
@@ -442,8 +445,7 @@ public class AreaDisplayPanel extends JPanel implements KeyListener, MouseListen
 					adjustY = (tileImage.getHeight(null) / 2);
 				}
 
-
-			// if object is a container(chest)
+				// if object is a container(chest)
 			} else if (roomObj instanceof FixedContainerGO) {
 				FixedContainerGO container = (FixedContainerGO) roomObj;
 				Position containerPos = container.getPosition();
@@ -453,7 +455,7 @@ public class AreaDisplayPanel extends JPanel implements KeyListener, MouseListen
 					adjustY = (tileImage.getHeight(null) / 2);
 				}
 
-			// maker is a game
+				// maker is a game
 			} else if ((!(roomObj instanceof MarkerGO)) && roomObj.getPosition().getPosX() == x
 					&& roomObj.getPosition().getPosY() == y) {
 
@@ -591,7 +593,7 @@ public class AreaDisplayPanel extends JPanel implements KeyListener, MouseListen
 	/**
 	 * Gets the appropriate token for an doors/windows/chests dpending on the current view,
 	 * the way its facing, and if its unlocked or locked
-	 * 
+	 *
 	 * @param token - original token
 	 * @param unlocked
 	 * @return - new token
