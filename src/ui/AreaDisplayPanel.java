@@ -137,7 +137,7 @@ public class AreaDisplayPanel extends JPanel implements KeyListener, MouseListen
 
 		} else {
 
-			this.toAnimate.clear(); //New room so clear animation.
+			this.toAnimate.clear(); //New room so clear animation. for presentation day.
 
 			String oldArea = currentArea.getAreaName();
 
